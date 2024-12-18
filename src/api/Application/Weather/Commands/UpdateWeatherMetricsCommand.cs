@@ -1,6 +1,6 @@
 using Domain.Weather;
 using MediatR;
-using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Application.Weather.Commands;
 
@@ -8,9 +8,9 @@ public record UpdateWeatherMetricsCommand(string ZipCode, WeatherMetrics Metrics
 
 public class UpdateWeatherMetricsCommandHandler : IRequestHandler<UpdateWeatherMetricsCommand>
 {
-    private readonly ILogger<UpdateWeatherMetricsCommandHandler> _logger;
+    private readonly ILogger _logger;
 
-    public UpdateWeatherMetricsCommandHandler(ILogger<UpdateWeatherMetricsCommandHandler> logger)
+    public UpdateWeatherMetricsCommandHandler(ILogger logger)
     {
         _logger = logger;
     }
@@ -21,7 +21,7 @@ public class UpdateWeatherMetricsCommandHandler : IRequestHandler<UpdateWeatherM
         metrics.ZipCode = request.ZipCode;
         metrics.Timestamp = DateTime.UtcNow;
 
-        _logger.LogInformation(
+        _logger.Information(
             "Update request received for zip code {ZipCode}: Temperature: {Temperature}°F, Humidity: {Humidity}%, Precipitation: {Precipitation} inches",
             metrics.ZipCode,
             metrics.Temperature,
