@@ -1,6 +1,6 @@
 using Domain.Weather;
 using MediatR;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Weather.Commands;
 
@@ -8,11 +8,11 @@ public record UpdateWeatherMetricsCommand(string ZipCode, WeatherMetrics Metrics
 
 public class UpdateWeatherMetricsCommandHandler : IRequestHandler<UpdateWeatherMetricsCommand>
 {
-    private readonly IMemoryCache _cache;
+    private readonly ILogger<UpdateWeatherMetricsCommandHandler> _logger;
 
-    public UpdateWeatherMetricsCommandHandler(IMemoryCache cache)
+    public UpdateWeatherMetricsCommandHandler(ILogger<UpdateWeatherMetricsCommandHandler> logger)
     {
-        _cache = cache;
+        _logger = logger;
     }
 
     public Task Handle(UpdateWeatherMetricsCommand request, CancellationToken cancellationToken)
@@ -21,10 +21,12 @@ public class UpdateWeatherMetricsCommandHandler : IRequestHandler<UpdateWeatherM
         metrics.ZipCode = request.ZipCode;
         metrics.Timestamp = DateTime.UtcNow;
 
-        var cacheOptions = new MemoryCacheEntryOptions()
-            .SetSlidingExpiration(TimeSpan.FromHours(1));
-
-        _cache.Set(request.ZipCode, metrics, cacheOptions);
+        _logger.LogInformation(
+            "Update request received for zip code {ZipCode}: Temperature: {Temperature}°F, Humidity: {Humidity}%, Precipitation: {Precipitation} inches",
+            metrics.ZipCode,
+            metrics.Temperature,
+            metrics.Humidity,
+            metrics.Precipitation);
 
         return Task.CompletedTask;
     }

@@ -1,7 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/dotnetcore,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=dotnetcore,react
 
-.vs/**
+*/.vs/**
 .vscode/**
 
 ### DotnetCore ###

@@ -2,12 +2,10 @@ using Application.Weather.Commands;
 using Application.Weather.Queries;
 using Domain.Weather;
 using MediatR;
-using Microsoft.Extensions.Caching.Memory;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddMemoryCache();
 builder.Services.AddMediatR(cfg => 
 {
     cfg.RegisterServicesFromAssembly(typeof(GetWeatherMetricsQuery).Assembly);
