@@ -1,7 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/dotnetcore,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=dotnetcore,react
 
-*/.vs/**
+**/.vs/**
 .vscode/**
 
 ### DotnetCore ###
@@ -31,3 +31,17 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore,react
 
+src/api/.vs/Weather/FileContentIndex/2c89419e-2dab-4beb-bea1-0ce99782ae3c.vsidx
+src/api/.vs/Weather/FileContentIndex/2fb47ed3-56a8-44b1-a311-50ddfff1bb61.vsidx
+src/api/.vs/Weather/FileContentIndex/8c1f796c-6781-486b-bd4a-3421596ed0a6.vsidx
+src/api/.vs/Weather/FileContentIndex/76deb945-b357-4a2c-87fe-b2e5d57dc2f0.vsidx
+src/api/.vs/Weather/v17/.suo
+src/api/.vs/Weather/v17/DocumentLayout.json
+src/api/Api/obj/Debug/net8.0/Api.AssemblyInfo.cs
+src/api/Api/obj/Debug/net8.0/Api.AssemblyInfoInputs.cache
+src/api/Application/obj/Debug/net8.0/Application.AssemblyInfo.cs
+src/api/Application/obj/Debug/net8.0/Application.AssemblyInfoInputs.cache
+src/api/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
+src/api/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
+src/api/Infrastructure/obj/Debug/net8.0/Infrastructure.AssemblyInfo.cs
+src/api/Infrastructure/obj/Debug/net8.0/Infrastructure.AssemblyInfoInputs.cache
