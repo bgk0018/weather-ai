@@ -1,5 +1,6 @@
 using Domain.Weather;
 using MediatR;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Application.Weather.Queries;
 
